@@ -136,6 +136,10 @@ The pieces are independent. You can adopt the Outbound Gateway alone, the
 Decision Engine alone, or all three. They compose, they don't depend on each
 other to exist.
 
+**Hands-on:** [docs/recipe-add-a-provider.md](docs/recipe-add-a-provider.md) — a
+step-by-step, end-to-end walkthrough for wiring a new external provider (manifest
+→ OAuth → webhook → worker → decision), with a worked example.
+
 ---
 
 ## Install (reference core)

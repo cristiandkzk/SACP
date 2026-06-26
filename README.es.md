@@ -138,6 +138,10 @@ Acción solicitada (UI, bot, asistente interno, worker, webhook entrante)
 Las piezas son independientes. Podés adoptar solo el Outbound Gateway, solo el
 Decision Engine, o los tres. Se componen, no dependen una de otra para existir.
 
+**Manos a la obra:** [docs/recipe-add-a-provider.es.md](docs/recipe-add-a-provider.es.md) —
+un walkthrough paso a paso, de punta a punta, para cablear un provider externo
+nuevo (manifest → OAuth → webhook → worker → decisión), con un ejemplo trabajado.
+
 ---
 
 ## Instalación (core de referencia)
