@@ -219,6 +219,9 @@ currency, estimatedCost, actualCost, costStatus, occurredAt.
 
 ## Agregar un provider
 
+> Walkthrough completo paso a paso (manifest → OAuth → webhook → worker →
+> decisión) con un ejemplo trabajado: **[recipe-add-a-provider.es.md](recipe-add-a-provider.es.md)**.
+
 ```
 1. Crear el manifest.
 2. Registrarlo.

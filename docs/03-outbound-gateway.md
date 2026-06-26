@@ -216,6 +216,9 @@ actualCost, costStatus, occurredAt.
 
 ## Adding a provider
 
+> Full step-by-step walkthrough (manifest → OAuth → webhook → worker → decision)
+> with a worked example: **[recipe-add-a-provider.md](recipe-add-a-provider.md)**.
+
 ```
 1. Create the manifest.
 2. Register it.
