@@ -2,6 +2,9 @@
 
 **English** · [Español](README.es.md)
 
+[![CI](https://github.com/cristiandkzk/SACP/actions/workflows/ci.yml/badge.svg)](https://github.com/cristiandkzk/SACP/actions/workflows/ci.yml)
+[![npm](https://img.shields.io/npm/v/sacp-core)](https://www.npmjs.com/package/sacp-core)
+
 **Let AI take real-world actions — without giving it the last word.**
 
 SACP is a language-agnostic architecture pattern for any product where an LLM

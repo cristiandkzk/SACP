@@ -2,6 +2,9 @@
 
 [English](README.md) · **Español**
 
+[![CI](https://github.com/cristiandkzk/SACP/actions/workflows/ci.yml/badge.svg)](https://github.com/cristiandkzk/SACP/actions/workflows/ci.yml)
+[![npm](https://img.shields.io/npm/v/sacp-core)](https://www.npmjs.com/package/sacp-core)
+
 **Dejá que la IA ejecute acciones reales — sin darle la última palabra.**
 
 SACP es un patrón de arquitectura agnóstico al lenguaje para cualquier producto
