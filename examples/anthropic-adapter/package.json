@@ -1,0 +1,19 @@
+{
+  "name": "sacp-example-anthropic-adapter",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Example: a real Claude (Anthropic) ModelProvider adapter for sacp-core.",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "demo": "node dist/demo.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.106.0",
+    "sacp-core": "file:../../packages/core"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "typescript": "^5.4.0"
+  }
+}

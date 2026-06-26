@@ -1,5 +1,7 @@
 # AI Model Layer
 
+[English](02-model-layer.md) · [Español](02-model-layer.es.md)
+
 How to choose the model, meter cost, defend against prompt injection, and box in
 the LLM so it can propose but never act. This is the only layer that touches a
 model provider.

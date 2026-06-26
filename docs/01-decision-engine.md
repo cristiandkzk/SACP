@@ -1,5 +1,7 @@
 # Decision Engine
 
+[English](01-decision-engine.md) · [Español](01-decision-engine.es.md)
+
 A practical way to decide on actions with AI without letting the AI have the
 final say.
 

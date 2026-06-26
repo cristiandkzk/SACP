@@ -1,5 +1,7 @@
 # How it saves tokens
 
+[English](token-savings.md) · [Español](token-savings.es.md)
+
 This page makes the cost claim concrete. The numbers below are an **illustrative
 model, not a measured benchmark** — the point is to show *where* the savings
 come from and give you a formula to plug your own rates into. The control plane

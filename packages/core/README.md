@@ -1,5 +1,7 @@
 # sacp-core
 
+[English](README.md) · [Español](README.es.md)
+
 Reference core for the **[Safe Automation Control Plane](https://github.com/cristiandkzk/SACP)**.
 
 The hard-to-get-right, dependency-free pieces of the pattern, as a small

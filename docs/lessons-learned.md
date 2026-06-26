@@ -1,5 +1,7 @@
 # Lessons learned
 
+[English](lessons-learned.md) · [Español](lessons-learned.es.md)
+
 These are bugs found by **running** the pattern against a real database and a
 real model provider — not by reading the spec. The same problems show up in any
 implementation of this architecture, so they are worth writing down.

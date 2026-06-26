@@ -1,5 +1,7 @@
 # Outbound Gateway
 
+[English](03-outbound-gateway.md) · [Español](03-outbound-gateway.es.md)
+
 A practical way to call external APIs without duplicating plumbing in every
 business module.
 

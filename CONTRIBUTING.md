@@ -1,5 +1,7 @@
 # Contributing to Safe Automation Control Plane (SACP)
 
+[English](CONTRIBUTING.md) · [Español](CONTRIBUTING.es.md)
+
 This is a pattern, not a framework, so the most valuable contributions are
 **experience reports**, not feature requests.
 
