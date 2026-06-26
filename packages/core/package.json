@@ -1,0 +1,49 @@
+{
+  "name": "sacp-core",
+  "version": "0.1.0",
+  "description": "Reference core for the Safe Automation Control Plane (SACP): policy engine, rule-only fallback, decision-output schema validation, decision state machine, circuit breaker and token-bucket rate limiter. Zero runtime dependencies, ports & adapters.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "tsc -p tsconfig.test.json && node --test \"dist/__tests__/*.test.js\"",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "ai",
+    "llm",
+    "ai-agents",
+    "ai-safety",
+    "governance",
+    "control-plane",
+    "policy-engine",
+    "circuit-breaker",
+    "llmops"
+  ],
+  "author": "cristiandkzk",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cristiandkzk/SACP.git",
+    "directory": "packages/core"
+  },
+  "homepage": "https://github.com/cristiandkzk/SACP",
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "typescript": "^5.4.0"
+  }
+}

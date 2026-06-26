@@ -135,6 +135,46 @@ other to exist.
 
 ---
 
+## Install (reference core)
+
+The deterministic, hard-to-get-right pieces ship as a small **zero-dependency
+TypeScript package**, [`sacp-core`](packages/core) — a policy engine, strict
+decision-output validation, rule-only fallback, decision state machine, circuit
+breaker and rate limiter, plus the ports you implement (storage, LLM provider,
+business validator).
+
+```bash
+npm install sacp-core
+```
+
+```ts
+import { DecisionEngine, PolicyEngine } from 'sacp-core';
+
+const policy = new PolicyEngine();
+policy.register('router_ai.campaign_send', (snap) => {
+  const ctx = snap.context as { balance: number; cost: number };
+  return ctx.balance >= ctx.cost
+    ? { allowed: true }
+    : { allowed: false, reasonCode: 'BALANCE_INSUFFICIENT' };
+});
+
+// No model wired yet -> a conservative rule-only decision, never an exception.
+const engine = new DecisionEngine({ policy });
+const { output } = await engine.decide({
+  tenantId: 't_123',
+  action: { type: 'campaign_send' },
+  risk: { riskLevel: 'low' },
+  context: { balance: 1000, cost: 200 },
+});
+// output.decision -> 'allow' | 'block' | 'require_approval' | 'split'
+```
+
+Full package docs and the LLM-adapter example: **[packages/core](packages/core)**.
+The core ships the logic and the contracts; your database and model provider stay
+yours — that is what keeps it dependency-free.
+
+---
+
 ## Who this is for
 
 - You ship a product where an LLM picks actions with cost, side effects, or
@@ -150,9 +190,11 @@ If your LLM only generates text that a human reads, you do not need this. If it
 
 ## Status & philosophy
 
-This is a **pattern and a spec**, not a framework you `npm install`. It is
-deliberately language- and database-agnostic — the contracts matter, the
-storage engine does not. It was extracted from a production system, which is why
+This is primarily a **pattern and a spec**. A small reference core
+([`sacp-core`](packages/core)) implements the deterministic pieces so you can
+`npm install` the part that is genuinely hard to get right — but the spec is the
+primary artifact, and the core is deliberately language- and database-agnostic:
+the contracts matter, the storage engine does not. It was extracted from a production system, which is why
 [docs/lessons-learned.md](docs/lessons-learned.md) exists: those are real bugs
 found by running the pattern, not by reading about it. Start there if you want
 to know whether the people who wrote this actually built it.

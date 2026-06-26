@@ -137,6 +137,47 @@ Decision Engine, o los tres. Se componen, no dependen una de otra para existir.
 
 ---
 
+## Instalación (core de referencia)
+
+Las piezas determinísticas y difíciles de hacer bien vienen como un **paquete
+TypeScript de cero dependencias**, [`sacp-core`](packages/core) — policy engine,
+validación estricta del output de decisión, rule-only fallback, state machine de
+decisiones, circuit breaker y rate limiter, más los ports que vos implementás
+(storage, provider de LLM, business validator).
+
+```bash
+npm install sacp-core
+```
+
+```ts
+import { DecisionEngine, PolicyEngine } from 'sacp-core';
+
+const policy = new PolicyEngine();
+policy.register('router_ai.campaign_send', (snap) => {
+  const ctx = snap.context as { balance: number; cost: number };
+  return ctx.balance >= ctx.cost
+    ? { allowed: true }
+    : { allowed: false, reasonCode: 'BALANCE_INSUFFICIENT' };
+});
+
+// Sin modelo conectado -> decisión conservadora por reglas, nunca una excepción.
+const engine = new DecisionEngine({ policy });
+const { output } = await engine.decide({
+  tenantId: 't_123',
+  action: { type: 'campaign_send' },
+  risk: { riskLevel: 'low' },
+  context: { balance: 1000, cost: 200 },
+});
+// output.decision -> 'allow' | 'block' | 'require_approval' | 'split'
+```
+
+Docs completas del paquete y el ejemplo de adapter de LLM:
+**[packages/core](packages/core)**. El core trae la lógica y los contratos; tu
+base de datos y tu provider de modelo quedan tuyos — eso es lo que lo mantiene
+sin dependencias.
+
+---
+
 ## Para quién es
 
 - Tenés un producto donde un LLM elige acciones con costo, efectos secundarios o
@@ -153,9 +194,11 @@ cosas, sí.
 
 ## Estado y filosofía
 
-Esto es un **patrón y un spec**, no un framework que instalás con `npm`. Es
-deliberadamente agnóstico al lenguaje y a la base de datos — importan los
-contratos, no el motor de storage. Fue extraído de un sistema en producción, por
+Esto es ante todo un **patrón y un spec**. Un core de referencia
+([`sacp-core`](packages/core)) implementa las piezas determinísticas para que
+puedas `npm install` la parte que de verdad es difícil de hacer bien — pero el
+spec es el artefacto principal, y el core es deliberadamente agnóstico al
+lenguaje y a la base de datos: importan los contratos, no el motor de storage. Fue extraído de un sistema en producción, por
 eso existe [docs/lessons-learned.md](docs/lessons-learned.md): esos son bugs
 reales encontrados corriendo el patrón, no leyendo sobre él. Empezá ahí si querés
 saber si quien escribió esto realmente lo construyó.
